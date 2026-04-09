@@ -364,16 +364,16 @@ export default function LandingPage() {
             padding: 20px 20px 28px !important;
             text-align: left;
           }
-          .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-          .hero-badge { justify-content: flex-start !important; margin-bottom: 16px !important; }
-          .hero-h1 { font-size: 52px !important; line-height: 1.0 !important; margin-bottom: 16px !important; }
-          .hero-sub { font-size: 15px !important; margin-bottom: 16px !important; line-height: 1.5 !important; }
+          .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 20px; }
+          .hero-badge { justify-content: flex-start !important; margin-bottom: 14px !important; }
+          .hero-h1 { font-size: 52px !important; line-height: 1.0 !important; margin-bottom: 12px !important; }
+          .hero-sub { font-size: 15px !important; margin-bottom: 12px !important; line-height: 1.45 !important; }
           .hero-bullets {
             flex-direction: column;
-            gap: 8px;
+            gap: 7px;
             align-items: flex-start;
             justify-content: flex-start;
-            margin-bottom: 16px;
+            margin-bottom: 0;
           }
           .hero-buttons {
             flex-direction: column;
@@ -429,18 +429,18 @@ export default function LandingPage() {
           </div>
 
           <h1 className="hero-h1" style={{
-            fontSize: 'clamp(34px, 7vw, 64px)',
+            fontSize: 'clamp(48px, 7.5vw, 80px)',
             fontWeight: 700,
             color: C.navy,
             margin: '0 0 20px',
-            lineHeight: 1.1,
+            lineHeight: 1.05,
             letterSpacing: '-0.04em',
           }}>
             Il CRM<br />
             <span style={{ color: C.orange }}>che lavora come lavori tu.</span>
           </h1>
 
-          <p className="hero-sub" style={{ fontSize: 'clamp(15px, 2.5vw, 19px)', color: C.muted, margin: '0 0 36px', lineHeight: 1.6, maxWidth: 540, marginLeft: 'auto', marginRight: 'auto' }}>
+          <p className="hero-sub" style={{ fontSize: 'clamp(16px, 2.5vw, 22px)', color: C.muted, margin: '0 0 32px', lineHeight: 1.55, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
             Pipeline kanban, contatti, task e KPI in un unico spazio flessibile.
             Niente bloat, niente prezzi assurdi. Solo ciò che serve davvero.
           </p>
