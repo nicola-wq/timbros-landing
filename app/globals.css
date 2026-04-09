@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --navy:    #1D3557;
+  --orange:  #E76F51;
+  --sage:    #2A9D8F;
+  --bg:      #F3F1F4;
+  --text:    #1a1a2e;
+  --muted:   #64748b;
+  --border:  rgba(29,53,87,0.10);
+  --glass:   rgba(255,255,255,0.62);
+  --radius:  16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Gradient background */
+.bg-gradient {
+  background: linear-gradient(145deg, #EEF0F6 0%, #F5F3F8 25%, #F3EEF0 60%, #EDF2F0 100%);
+  min-height: 100vh;
+}
