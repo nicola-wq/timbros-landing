@@ -56,21 +56,9 @@ const STEPS = [
 /* ── Logo component ─────────────────────────────────── */
 function Logo({ size = 20 }: { size?: number }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-      <div style={{
-        width: size * 1.7, height: size * 1.7,
-        borderRadius: size * 0.38,
-        background: C.navy,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        flexShrink: 0, position: 'relative',
-      }}>
-        <span style={{ fontFamily: "'DM Sans',sans-serif", fontWeight: 700, fontSize: size * 0.9, color: '#fff', lineHeight: 1, marginTop: size * 0.05 }}>t</span>
-        <div style={{ position: 'absolute', bottom: size * 0.13, right: size * 0.15, width: size * 0.33, height: size * 0.33, borderRadius: '50%', background: C.orange }} />
-      </div>
-      <span style={{ fontFamily: "'DM Sans',sans-serif", fontWeight: 500, fontSize: size, letterSpacing: '-0.03em', color: C.navy, lineHeight: 1 }}>
-        timbr<span style={{ color: C.orange, fontWeight: 700 }}>OS</span>
-      </span>
-    </div>
+    <span style={{ fontFamily: "'DM Sans',sans-serif", fontWeight: 500, fontSize: size, letterSpacing: '-0.03em', color: C.navy, lineHeight: 1 }}>
+      timbr<span style={{ color: C.orange, fontWeight: 700 }}>OS</span>
+    </span>
   )
 }
 
@@ -362,7 +350,6 @@ export default function LandingPage() {
             style={{ color: '#fff', fontWeight: 700, textDecoration: 'none' }}>
             Timbro Agency
           </a>
-          {' '}· Made in Italy · Dati in Europa
         </p>
       </div>
 
