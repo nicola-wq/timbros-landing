@@ -322,11 +322,12 @@ export default function LandingPage() {
         .hero-section {
           padding: clamp(48px,8vw,80px) 20px clamp(40px,6vw,60px);
           text-align: center;
-          max-width: 800px;
+          max-width: 900px;
           margin: 0 auto;
           width: 100%;
         }
         .hero-top { margin-bottom: 0; }
+        .hero-mobile-cta { display: none; }
         .hero-buttons {
           display: flex;
           gap: 12px;
@@ -357,36 +358,25 @@ export default function LandingPage() {
         .header-badge { display: inline-block; }
         @media (max-width: 640px) {
           .hero-section {
-            min-height: calc(100svh - 56px);
-            display: flex !important;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px 20px 28px !important;
+            padding: 32px 20px 40px !important;
             text-align: left;
           }
-          .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 20px; }
-          .hero-badge { justify-content: flex-start !important; margin-bottom: 14px !important; }
-          .hero-h1 { font-size: 52px !important; line-height: 1.0 !important; margin-bottom: 12px !important; }
-          .hero-sub { font-size: 15px !important; margin-bottom: 12px !important; line-height: 1.45 !important; }
+          .hero-badge { justify-content: flex-start !important; margin-bottom: 12px !important; }
+          .hero-h1 { font-size: 52px !important; line-height: 1.0 !important; margin-bottom: 10px !important; }
+          .hero-sub { font-size: 15px !important; margin-bottom: 10px !important; line-height: 1.45 !important; }
           .hero-bullets {
             flex-direction: column;
             gap: 7px;
             align-items: flex-start;
             justify-content: flex-start;
-            margin-bottom: 0;
+            margin-bottom: 24px;
           }
-          .hero-buttons {
-            flex-direction: column;
-            align-items: stretch;
-            margin-bottom: 0;
-            gap: 10px;
-          }
-          .hero-buttons a, .hero-buttons button { text-align: center; }
+          .hero-mobile-cta { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+          .mobile-trust { display: none !important; }
           .form-row { grid-template-columns: 1fr; }
           .features-grid { grid-template-columns: 1fr; }
           .steps-grid { grid-template-columns: 1fr; }
           .mockup-wrapper { display: none; }
-          .mobile-trust { display: flex; }
           .header-badge { display: none; }
         }
       `}</style>
@@ -429,15 +419,15 @@ export default function LandingPage() {
           </div>
 
           <h1 className="hero-h1" style={{
-            fontSize: 'clamp(48px, 7.5vw, 80px)',
+            fontSize: 'clamp(48px, 6.5vw, 80px)',
             fontWeight: 700,
             color: C.navy,
             margin: '0 0 20px',
             lineHeight: 1.05,
             letterSpacing: '-0.04em',
           }}>
-            Il CRM<br />
-            <span style={{ color: C.orange }}>che lavora come lavori tu.</span>
+            Il CRM che lavora<br />
+            <span style={{ color: C.orange }}>come lavori tu.</span>
           </h1>
 
           <p className="hero-sub" style={{ fontSize: 'clamp(16px, 2.5vw, 22px)', color: C.muted, margin: '0 0 32px', lineHeight: 1.55, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
@@ -460,6 +450,32 @@ export default function LandingPage() {
                 <span style={{ fontSize: 13, fontWeight: 600, color: C.navy, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>{label}</span>
               </div>
             ))}
+          </div>
+
+          {/* CTA buttons — mobile only, inline after bullets */}
+          <div className="hero-mobile-cta">
+            <button onClick={scrollToForm} style={{
+              padding: '16px 24px', fontSize: 16, fontWeight: 700,
+              background: C.navy, color: '#fff', border: 'none',
+              borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
+              letterSpacing: '-0.02em', boxShadow: '0 8px 24px rgba(29,53,87,0.25)',
+            }}>
+              Richiedi l&apos;accesso beta →
+            </button>
+            <a href="#come-funziona" style={{
+              padding: '16px 24px', fontSize: 16, fontWeight: 600,
+              background: C.glass, color: C.navy,
+              border: `1.5px solid ${C.border}`,
+              borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
+              textDecoration: 'none', letterSpacing: '-0.02em',
+              backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
+              textAlign: 'center', display: 'block',
+            }}>
+              Scopri come funziona
+            </a>
+            <p style={{ fontSize: 12, color: C.muted, textAlign: 'center', margin: '2px 0 0' }}>
+              Nessuna carta di credito · Accesso beta gratuito
+            </p>
           </div>
 
           {/* Mockup — desktop only */}
