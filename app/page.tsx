@@ -346,7 +346,14 @@ export default function LandingPage() {
         }
         .mockup-wrapper { display: block; }
         .mobile-trust { display: none; }
-        .mobile-bullets { display: none; }
+        .hero-bullets {
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-bottom: 28px;
+        }
         .header-badge { display: inline-block; }
         @media (max-width: 640px) {
           .hero-section {
@@ -359,10 +366,15 @@ export default function LandingPage() {
           }
           .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: center; }
           .hero-badge { justify-content: flex-start !important; margin-bottom: 16px !important; }
-          .hero-h1 { font-size: 44px !important; line-height: 1.05 !important; }
-          .hero-sub { font-size: 16px !important; margin-bottom: 20px !important; }
-          .mobile-bullets { display: flex !important; }
-          .desktop-bullets { display: none !important; }
+          .hero-h1 { font-size: 52px !important; line-height: 1.0 !important; margin-bottom: 16px !important; }
+          .hero-sub { font-size: 15px !important; margin-bottom: 16px !important; line-height: 1.5 !important; }
+          .hero-bullets {
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-bottom: 16px;
+          }
           .hero-buttons {
             flex-direction: column;
             align-items: stretch;
@@ -375,8 +387,6 @@ export default function LandingPage() {
           .steps-grid { grid-template-columns: 1fr; }
           .mockup-wrapper { display: none; }
           .mobile-trust { display: flex; }
-          .mobile-bullets { display: flex; }
-          .desktop-bullets { display: none; }
           .header-badge { display: none; }
         }
       `}</style>
@@ -435,24 +445,19 @@ export default function LandingPage() {
             Niente bloat, niente prezzi assurdi. Solo ciò che serve davvero.
           </p>
 
-          {/* Bullet bridge — mobile only */}
-          <div className="mobile-bullets" style={{ flexDirection: 'column', gap: 10, marginBottom: 24 }}>
+          {/* Bullet bridge — desktop row, mobile column */}
+          <div className="hero-bullets">
             {[
-              { label: 'Setup in 5 minuti', sub: 'Parti subito con template pronti per ogni settore.' },
-              { label: 'Zero distrazioni',  sub: 'Solo gli strumenti che servono, senza funzioni inutili.' },
-              { label: 'Tutto in una vista',sub: 'Gestisci pipeline, task e KPI in un unico spazio.' },
-            ].map(item => (
-              <div key={item.label} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                <div style={{ flexShrink: 0, marginTop: 2 }}>
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <circle cx="9" cy="9" r="9" fill={C.orange} fillOpacity="0.12"/>
-                    <path d="M5.5 9l2.5 2.5 4.5-5" stroke={C.orange} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: C.navy, letterSpacing: '-0.02em' }}>{item.label}: </span>
-                  <span style={{ fontSize: 14, color: C.muted, lineHeight: 1.5 }}>{item.sub}</span>
-                </div>
+              'Setup in 5 minuti',
+              'Zero distrazioni',
+              'Tutto in una vista',
+            ].map(label => (
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
+                  <circle cx="8" cy="8" r="8" fill={C.orange} fillOpacity="0.13"/>
+                  <path d="M4.5 8l2.5 2.5 4.5-5" stroke={C.orange} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <span style={{ fontSize: 13, fontWeight: 600, color: C.navy, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>{label}</span>
               </div>
             ))}
           </div>
