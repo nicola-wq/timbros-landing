@@ -353,13 +353,13 @@ export default function LandingPage() {
             display: flex !important;
             flex-direction: column;
             justify-content: space-between;
-            padding: 40px 20px 32px !important;
+            padding: 20px 20px 28px !important;
             text-align: left;
           }
           .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-          .hero-badge { justify-content: flex-start !important; }
+          .hero-badge { justify-content: flex-start !important; margin-bottom: 16px !important; }
           .hero-h1 { font-size: 44px !important; line-height: 1.05 !important; }
-          .hero-sub { font-size: 16px !important; margin-bottom: 0 !important; }
+          .hero-sub { font-size: 16px !important; margin-bottom: 20px !important; }
           .hero-buttons {
             flex-direction: column;
             align-items: stretch;
@@ -386,7 +386,7 @@ export default function LandingPage() {
         padding: '0 20px',
       }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Logo size={17} />
+          <Logo size={22} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span className="header-badge" style={{ fontSize: 12, fontWeight: 600, color: C.orange, background: 'rgba(231,111,81,0.1)', padding: '4px 10px', borderRadius: 20 }}>
               Beta privata
