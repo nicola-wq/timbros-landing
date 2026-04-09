@@ -360,6 +360,8 @@ export default function LandingPage() {
           .hero-badge { justify-content: flex-start !important; margin-bottom: 16px !important; }
           .hero-h1 { font-size: 44px !important; line-height: 1.05 !important; }
           .hero-sub { font-size: 16px !important; margin-bottom: 20px !important; }
+          .mobile-bullets { display: flex !important; }
+          .desktop-bullets { display: none !important; }
           .hero-buttons {
             flex-direction: column;
             align-items: stretch;
@@ -372,6 +374,8 @@ export default function LandingPage() {
           .steps-grid { grid-template-columns: 1fr; }
           .mockup-wrapper { display: none; }
           .mobile-trust { display: flex; }
+          .mobile-bullets { display: flex; }
+          .desktop-bullets { display: none; }
           .header-badge { display: none; }
         }
       `}</style>
@@ -429,6 +433,28 @@ export default function LandingPage() {
             Pipeline kanban, contatti, task e KPI in un unico spazio flessibile.
             Niente bloat, niente prezzi assurdi. Solo ciò che serve davvero.
           </p>
+
+          {/* Bullet bridge — mobile only */}
+          <div className="mobile-bullets" style={{ flexDirection: 'column', gap: 10, marginBottom: 24, display: 'none' }}>
+            {[
+              { label: 'Setup in 5 minuti', sub: 'Parti subito con template pronti per ogni settore.' },
+              { label: 'Zero distrazioni',  sub: 'Solo gli strumenti che servono, senza funzioni inutili.' },
+              { label: 'Tutto in una vista',sub: 'Gestisci pipeline, task e KPI in un unico spazio.' },
+            ].map(item => (
+              <div key={item.label} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                <div style={{ flexShrink: 0, marginTop: 2 }}>
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <circle cx="9" cy="9" r="9" fill={C.orange} fillOpacity="0.12"/>
+                    <path d="M5.5 9l2.5 2.5 4.5-5" stroke={C.orange} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: C.navy, letterSpacing: '-0.02em' }}>{item.label}: </span>
+                  <span style={{ fontSize: 14, color: C.muted, lineHeight: 1.5 }}>{item.sub}</span>
+                </div>
+              </div>
+            ))}
+          </div>
 
           {/* Mockup — desktop only */}
           <div className="mockup-wrapper" style={{ marginTop: 0 }}>
