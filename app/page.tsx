@@ -28,7 +28,7 @@ const FEATURES = [
   {
     icon: '✅',
     title: 'Task integrati',
-    desc: 'Crea attività direttamente sui deal, assegnale al team, traccia scadenze. Nessun'altra app necessaria.',
+    desc: "Crea attività direttamente sui deal, assegnale al team, traccia scadenze. Nessun'altra app necessaria.",
   },
   {
     icon: '📊',
