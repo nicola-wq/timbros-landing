@@ -320,10 +320,13 @@ export default function LandingPage() {
           gap: 12px;
         }
         .hero-section {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+          padding: clamp(48px,8vw,80px) 20px clamp(40px,6vw,60px);
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto;
+          width: 100%;
         }
+        .hero-top { margin-bottom: 0; }
         .hero-buttons {
           display: flex;
           gap: 12px;
@@ -347,17 +350,24 @@ export default function LandingPage() {
         @media (max-width: 640px) {
           .hero-section {
             min-height: calc(100svh - 56px);
-            justify-content: center;
-            padding-top: 32px !important;
-            padding-bottom: 32px !important;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 20px 32px !important;
+            text-align: left;
           }
-          .form-row { grid-template-columns: 1fr; }
+          .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+          .hero-badge { justify-content: flex-start !important; }
+          .hero-h1 { font-size: 44px !important; line-height: 1.05 !important; }
+          .hero-sub { font-size: 16px !important; margin-bottom: 0 !important; }
           .hero-buttons {
             flex-direction: column;
             align-items: stretch;
-            margin-bottom: 28px;
+            margin-bottom: 0;
+            gap: 10px;
           }
           .hero-buttons a, .hero-buttons button { text-align: center; }
+          .form-row { grid-template-columns: 1fr; }
           .features-grid { grid-template-columns: 1fr; }
           .steps-grid { grid-template-columns: 1fr; }
           .mockup-wrapper { display: none; }
@@ -394,82 +404,85 @@ export default function LandingPage() {
       </header>
 
       {/* ── HERO ────────────────────────────────── */}
-      <section className="hero-section" style={{ padding: 'clamp(48px,8vw,80px) 20px clamp(40px,6vw,60px)', textAlign: 'center', maxWidth: 800, margin: '0 auto', width: '100%' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(29,53,87,0.07)', padding: '6px 14px', borderRadius: 20, marginBottom: 24, fontSize: 13, color: C.navy, fontWeight: 600 }}>
-          <span style={{ width: 7, height: 7, borderRadius: '50%', background: C.sage, display: 'inline-block', flexShrink: 0 }} />
-          Accesso anticipato aperto — posti limitati
+      <section className="hero-section">
+
+        {/* TOP — badge + headline + sub */}
+        <div className="hero-top">
+          <div className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(29,53,87,0.07)', padding: '6px 14px', borderRadius: 20, marginBottom: 24, fontSize: 13, color: C.navy, fontWeight: 600 }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: C.sage, display: 'inline-block', flexShrink: 0 }} />
+            Accesso anticipato aperto — posti limitati
+          </div>
+
+          <h1 className="hero-h1" style={{
+            fontSize: 'clamp(34px, 7vw, 64px)',
+            fontWeight: 700,
+            color: C.navy,
+            margin: '0 0 20px',
+            lineHeight: 1.1,
+            letterSpacing: '-0.04em',
+          }}>
+            Il CRM<br />
+            <span style={{ color: C.orange }}>che lavora come lavori tu.</span>
+          </h1>
+
+          <p className="hero-sub" style={{ fontSize: 'clamp(15px, 2.5vw, 19px)', color: C.muted, margin: '0 0 36px', lineHeight: 1.6, maxWidth: 540, marginLeft: 'auto', marginRight: 'auto' }}>
+            Pipeline kanban, contatti, task e KPI in un unico spazio flessibile.
+            Niente bloat, niente prezzi assurdi. Solo ciò che serve davvero.
+          </p>
+
+          {/* Mockup — desktop only */}
+          <div className="mockup-wrapper" style={{ marginTop: 0 }}>
+            <div className="hero-buttons" style={{ marginBottom: 60 }}>
+              <button onClick={scrollToForm} style={{
+                padding: '15px 32px', fontSize: 16, fontWeight: 700,
+                background: C.navy, color: '#fff', border: 'none',
+                borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
+                letterSpacing: '-0.02em', boxShadow: '0 8px 24px rgba(29,53,87,0.25)',
+              }}>
+                Richiedi l&apos;accesso beta →
+              </button>
+              <a href="#come-funziona" style={{
+                padding: '15px 32px', fontSize: 16, fontWeight: 600,
+                background: C.glass, color: C.navy,
+                border: `1.5px solid ${C.border}`,
+                borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
+                textDecoration: 'none', letterSpacing: '-0.02em',
+                backdropFilter: 'blur(10px)',
+              }}>
+                Scopri come funziona
+              </a>
+            </div>
+            <AppMockup />
+          </div>
         </div>
 
-        <h1 style={{
-          fontSize: 'clamp(34px, 7vw, 64px)',
-          fontWeight: 700,
-          color: C.navy,
-          margin: '0 0 20px',
-          lineHeight: 1.1,
-          letterSpacing: '-0.04em',
-        }}>
-          Il CRM<br />
-          <span style={{ color: C.orange }}>che lavora come lavori tu.</span>
-        </h1>
-
-        <p style={{ fontSize: 'clamp(15px, 2.5vw, 19px)', color: C.muted, margin: '0 0 36px', lineHeight: 1.6, maxWidth: 540, marginLeft: 'auto', marginRight: 'auto' }}>
-          Pipeline kanban, contatti, task e KPI in un unico spazio flessibile.
-          Niente bloat, niente prezzi assurdi. Solo ciò che serve davvero.
-        </p>
-
-        <div className="hero-buttons">
+        {/* BOTTOM — CTA buttons, mobile only (pinned at bottom via space-between) */}
+        <div className="mobile-trust" style={{ flexDirection: 'column', gap: 10, width: '100%' }}>
           <button onClick={scrollToForm} style={{
-            padding: '15px 32px', fontSize: 16, fontWeight: 700,
+            padding: '16px 24px', fontSize: 16, fontWeight: 700,
             background: C.navy, color: '#fff', border: 'none',
             borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
             letterSpacing: '-0.02em', boxShadow: '0 8px 24px rgba(29,53,87,0.25)',
+            width: '100%',
           }}>
             Richiedi l&apos;accesso beta →
           </button>
           <a href="#come-funziona" style={{
-            padding: '15px 32px', fontSize: 16, fontWeight: 600,
+            padding: '16px 24px', fontSize: 16, fontWeight: 600,
             background: C.glass, color: C.navy,
             border: `1.5px solid ${C.border}`,
             borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
             textDecoration: 'none', letterSpacing: '-0.02em',
-            backdropFilter: 'blur(10px)',
+            backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
+            textAlign: 'center', display: 'block',
           }}>
             Scopri come funziona
           </a>
-        </div>
-
-        {/* Mobile trust block — visible only on mobile */}
-        <div className="mobile-trust" style={{
-          flexDirection: 'column', gap: 12, width: '100%', maxWidth: 420, margin: '0 auto',
-        }}>
-          {[
-            { icon: <IconPipeline />, label: 'Pipeline kanban', sub: 'Fasi personalizzabili' },
-            { icon: <IconTask />,     label: 'Task integrati',  sub: 'Direttamente sui deal' },
-            { icon: <IconLock />,     label: 'Sicurezza totale',sub: '2FA + Row Level Security' },
-          ].map(item => (
-            <div key={item.label} style={{
-              display: 'flex', alignItems: 'center', gap: 16,
-              background: C.glass, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
-              border: `1px solid ${C.border}`, borderRadius: 16, padding: '14px 18px',
-              textAlign: 'left',
-            }}>
-              <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(29,53,87,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                {item.icon}
-              </div>
-              <div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: C.navy, letterSpacing: '-0.02em' }}>{item.label}</div>
-                <div style={{ fontSize: 13, color: C.muted, marginTop: 2 }}>{item.sub}</div>
-              </div>
-            </div>
-          ))}
-          <p style={{ fontSize: 13, color: C.muted, margin: '4px 0 0', textAlign: 'center' }}>
+          <p style={{ fontSize: 12, color: C.muted, textAlign: 'center', margin: '4px 0 0' }}>
             Nessuna carta di credito · Accesso beta gratuito
           </p>
         </div>
 
-        <div className="mockup-wrapper">
-          <AppMockup />
-        </div>
       </section>
 
       {/* ── SOCIAL PROOF BAR ────────────────────── */}
