@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 
-/* ── Design tokens (inline per zero-dependency) ─────── */
+/* ── Design tokens ─────────────────────────────────── */
 const C = {
   navy:   '#1D3557',
   orange: '#E76F51',
@@ -14,42 +14,83 @@ const C = {
   text:   '#1a1a2e',
 }
 
+/* ── SVG Icons ─────────────────────────────────────── */
+function IconPipeline() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="5" height="18" rx="1.5"/>
+      <rect x="9.5" y="6" width="5" height="15" rx="1.5"/>
+      <rect x="16" y="9" width="5" height="12" rx="1.5"/>
+    </svg>
+  )
+}
+function IconContacts() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="9" cy="7" r="3"/>
+      <path d="M3 20c0-3.314 2.686-6 6-6s6 2.686 6 6"/>
+      <circle cx="17" cy="8" r="2.5"/>
+      <path d="M17 14c2.761 0 5 2.239 5 5"/>
+    </svg>
+  )
+}
+function IconTask() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 11l3 3L22 4"/>
+      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+    </svg>
+  )
+}
+function IconDashboard() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="12" width="4" height="9" rx="1"/>
+      <rect x="9.5" y="7" width="4" height="14" rx="1"/>
+      <rect x="16" y="3" width="4" height="18" rx="1"/>
+    </svg>
+  )
+}
+function IconWorkspace() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="8" height="8" rx="2"/>
+      <rect x="14" y="3" width="8" height="8" rx="2"/>
+      <rect x="2" y="13" width="8" height="8" rx="2"/>
+      <rect x="14" y="13" width="8" height="8" rx="2"/>
+    </svg>
+  )
+}
+function IconLock() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="11" width="14" height="10" rx="2"/>
+      <path d="M8 11V7a4 4 0 018 0v4"/>
+      <circle cx="12" cy="16" r="1.5" fill={C.navy}/>
+    </svg>
+  )
+}
+function IconEnvelope() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M2 7l10 7 10-7"/>
+    </svg>
+  )
+}
+
 const FEATURES = [
-  {
-    icon: '🔀',
-    title: 'Pipeline adattabile',
-    desc: 'Scegli un template (agenzia, B2B, real estate, recruiting…) o costruisci le tue fasi da zero. Ogni workspace lavora come vuoi tu.',
-  },
-  {
-    icon: '👥',
-    title: 'Contatti smart',
-    desc: 'Importa da CSV o vCard, assegna colori e ruoli, collega ogni contatto alle opportunità. La rubrica che mancava al tuo CRM.',
-  },
-  {
-    icon: '✅',
-    title: 'Task integrati',
-    desc: "Crea attività direttamente sui deal, assegnale al team, traccia scadenze. Nessun'altra app necessaria.",
-  },
-  {
-    icon: '📊',
-    title: 'Dashboard KPI',
-    desc: 'Valore pipeline pesato, conversione per stage, attività aperte. I numeri che contano, sempre in primo piano.',
-  },
-  {
-    icon: '🏢',
-    title: 'Multi-workspace',
-    desc: 'Gestisci più clienti o progetti in spazi separati. Cambia workspace con un click — dati isolati, nessuna contaminazione.',
-  },
-  {
-    icon: '🔒',
-    title: 'Sicurezza enterprise',
-    desc: '2FA nativo TOTP, Row Level Security su ogni dato, invite membri con controllo ruoli. Tuo e solo tuo.',
-  },
+  { Icon: IconPipeline, title: 'Pipeline adattabile', desc: 'Scegli un template (agenzia, B2B, real estate, recruiting…) o costruisci le tue fasi da zero. Ogni workspace lavora come vuoi tu.' },
+  { Icon: IconContacts, title: 'Contatti smart', desc: 'Importa da CSV o vCard, assegna colori e ruoli, collega ogni contatto alle opportunità. La rubrica che mancava al tuo CRM.' },
+  { Icon: IconTask,     title: 'Task integrati', desc: "Crea attività direttamente sui deal, assegnale al team, traccia scadenze. Nessun'altra app necessaria." },
+  { Icon: IconDashboard,title: 'Dashboard KPI', desc: 'Valore pipeline pesato, conversione per stage, attività aperte. I numeri che contano, sempre in primo piano.' },
+  { Icon: IconWorkspace,title: 'Multi-workspace', desc: 'Gestisci più clienti o progetti in spazi separati. Cambia workspace con un click — dati isolati, nessuna contaminazione.' },
+  { Icon: IconLock,     title: 'Sicurezza enterprise', desc: '2FA nativo TOTP, Row Level Security su ogni dato, invite membri con controllo ruoli. Tuo e solo tuo.' },
 ]
 
 const STEPS = [
-  { n: '01', title: 'Richiedi l\'accesso', desc: 'Compila il form qui sotto con nome, cognome e email. Nessuna carta di credito.' },
-  { n: '02', title: 'Ricevi l\'approvazione', desc: 'Valutiamo ogni richiesta manualmente. Se il profilo è adatto, ti inviamo il link per creare l\'account.' },
+  { n: '01', title: "Richiedi l'accesso", desc: 'Compila il form qui sotto con nome, cognome e email. Nessuna carta di credito.' },
+  { n: '02', title: "Ricevi l'approvazione", desc: "Valutiamo ogni richiesta manualmente. Se il profilo è adatto, ti inviamo il link per creare l'account." },
   { n: '03', title: 'Parti in 2 minuti', desc: 'Crei il workspace, scegli il template di pipeline, inviti il team. Subito operativo.' },
 ]
 
@@ -76,7 +117,6 @@ function AccessForm() {
     e.preventDefault()
     setLoading(true)
     setError('')
-
     try {
       const res = await fetch('/api/request-access', {
         method: 'POST',
@@ -95,7 +135,9 @@ function AccessForm() {
   if (done) {
     return (
       <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-        <div style={{ fontSize: 52, marginBottom: 16 }}>📬</div>
+        <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'center' }}>
+          <IconEnvelope />
+        </div>
         <h3 style={{ fontSize: 24, fontWeight: 700, color: C.navy, margin: '0 0 12px', letterSpacing: '-0.03em' }}>
           Richiesta inviata!
         </h3>
@@ -118,11 +160,12 @@ function AccessForm() {
     color: C.text,
     outline: 'none',
     transition: 'border-color 150ms',
+    boxSizing: 'border-box',
   }
 
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+      <div className="form-row">
         <div>
           <label style={labelStyle}>Nome *</label>
           <input style={inputStyle} placeholder="Mario" value={name}
@@ -170,13 +213,14 @@ function AccessForm() {
         border: 'none',
         borderRadius: 12,
         cursor: loading ? 'not-allowed' : 'pointer',
-        transition: 'background 150ms, transform 100ms',
+        transition: 'background 150ms',
         letterSpacing: '-0.02em',
+        width: '100%',
       }}
         onMouseEnter={e => { if (!loading) e.currentTarget.style.background = '#162844' }}
         onMouseLeave={e => { if (!loading) e.currentTarget.style.background = C.navy }}
       >
-        {loading ? 'Invio in corso…' : 'Richiedi l\'accesso anticipato →'}
+        {loading ? 'Invio in corso…' : "Richiedi l'accesso anticipato →"}
       </button>
 
       <p style={{ margin: 0, fontSize: 13, color: C.muted, textAlign: 'center' }}>
@@ -199,11 +243,11 @@ const labelStyle: React.CSSProperties = {
 function AppMockup() {
   const stages = ['Lead', 'Proposta', 'Trattativa', 'Chiuso']
   const cards = [
-    { stage: 0, name: 'Luca Ferrari', val: '€ 4.200', tag: '🔥 Caldo' },
-    { stage: 0, name: 'Studio Rossi', val: '€ 8.500', tag: '📞 Da chiamare' },
-    { stage: 1, name: 'Acme srl', val: '€ 12.000', tag: '📋 Proposta inviata' },
-    { stage: 2, name: 'Beta Tech', val: '€ 6.800', tag: '⏳ In attesa' },
-    { stage: 3, name: 'Gamma Srl', val: '€ 9.200', tag: '✓ Vinto' },
+    { stage: 0, name: 'Luca Ferrari',  val: '€ 4.200', tag: 'Caldo' },
+    { stage: 0, name: 'Studio Rossi',  val: '€ 8.500', tag: 'Da chiamare' },
+    { stage: 1, name: 'Acme srl',      val: '€ 12.000',tag: 'Proposta inviata' },
+    { stage: 2, name: 'Beta Tech',     val: '€ 6.800', tag: 'In attesa' },
+    { stage: 3, name: 'Gamma Srl',     val: '€ 9.200', tag: 'Vinto' },
   ]
 
   return (
@@ -267,25 +311,64 @@ export default function LandingPage() {
       background: 'linear-gradient(145deg, #EEF0F6 0%, #F5F3F8 25%, #F3EEF0 60%, #EDF2F0 100%)',
       minHeight: '100vh',
     }}>
+      {/* ── Responsive styles ───────────────────── */}
+      <style>{`
+        * { box-sizing: border-box; }
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        .hero-buttons {
+          display: flex;
+          gap: 12px;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-bottom: 60px;
+        }
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+        }
+        .steps-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+        .mockup-wrapper { display: block; }
+        .header-badge { display: inline-block; }
+        @media (max-width: 640px) {
+          .form-row { grid-template-columns: 1fr; }
+          .hero-buttons { flex-direction: column; align-items: stretch; }
+          .hero-buttons a, .hero-buttons button { text-align: center; }
+          .features-grid { grid-template-columns: 1fr; }
+          .steps-grid { grid-template-columns: 1fr; }
+          .mockup-wrapper { display: none; }
+          .header-badge { display: none; }
+        }
+      `}</style>
+
       {/* ── HEADER ──────────────────────────────── */}
       <header style={{
         position: 'sticky', top: 0, zIndex: 50,
-        background: 'rgba(243,241,244,0.85)',
+        background: 'rgba(243,241,244,0.90)',
         backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
         borderBottom: `1px solid ${C.border}`,
-        padding: '0 24px',
+        padding: '0 20px',
       }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Logo size={17} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <span style={{ fontSize: 12, fontWeight: 600, color: C.orange, background: 'rgba(231,111,81,0.1)', padding: '4px 10px', borderRadius: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <span className="header-badge" style={{ fontSize: 12, fontWeight: 600, color: C.orange, background: 'rgba(231,111,81,0.1)', padding: '4px 10px', borderRadius: 20 }}>
               Beta privata
             </span>
             <button onClick={scrollToForm} style={{
-              padding: '9px 20px', fontSize: 13, fontWeight: 700,
+              padding: '9px 18px', fontSize: 13, fontWeight: 700,
               background: C.navy, color: '#fff', border: 'none',
               borderRadius: 10, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.02em', whiteSpace: 'nowrap',
             }}>
               Richiedi accesso
             </button>
@@ -294,37 +377,37 @@ export default function LandingPage() {
       </header>
 
       {/* ── HERO ────────────────────────────────── */}
-      <section style={{ padding: '80px 24px 60px', textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(29,53,87,0.07)', padding: '6px 14px', borderRadius: 20, marginBottom: 28, fontSize: 13, color: C.navy, fontWeight: 600 }}>
-          <span style={{ width: 7, height: 7, borderRadius: '50%', background: C.sage, display: 'inline-block' }} />
+      <section style={{ padding: 'clamp(48px,8vw,80px) 20px clamp(40px,6vw,60px)', textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(29,53,87,0.07)', padding: '6px 14px', borderRadius: 20, marginBottom: 24, fontSize: 13, color: C.navy, fontWeight: 600 }}>
+          <span style={{ width: 7, height: 7, borderRadius: '50%', background: C.sage, display: 'inline-block', flexShrink: 0 }} />
           Accesso anticipato aperto — posti limitati
         </div>
 
         <h1 style={{
-          fontSize: 'clamp(38px, 6vw, 64px)',
+          fontSize: 'clamp(34px, 7vw, 64px)',
           fontWeight: 700,
           color: C.navy,
           margin: '0 0 20px',
           lineHeight: 1.1,
           letterSpacing: '-0.04em',
         }}>
-          Il CRM italiano<br />
+          Il CRM<br />
           <span style={{ color: C.orange }}>che lavora come lavori tu.</span>
         </h1>
 
-        <p style={{ fontSize: 'clamp(16px, 2.5vw, 20px)', color: C.muted, margin: '0 0 40px', lineHeight: 1.6, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
+        <p style={{ fontSize: 'clamp(15px, 2.5vw, 19px)', color: C.muted, margin: '0 0 36px', lineHeight: 1.6, maxWidth: 540, marginLeft: 'auto', marginRight: 'auto' }}>
           Pipeline kanban, contatti, task e KPI in un unico spazio flessibile.
           Niente bloat, niente prezzi assurdi. Solo ciò che serve davvero.
         </p>
 
-        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 60 }}>
+        <div className="hero-buttons">
           <button onClick={scrollToForm} style={{
             padding: '15px 32px', fontSize: 16, fontWeight: 700,
             background: C.navy, color: '#fff', border: 'none',
             borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
             letterSpacing: '-0.02em', boxShadow: '0 8px 24px rgba(29,53,87,0.25)',
           }}>
-            Richiedi l'accesso beta →
+            Richiedi l&apos;accesso beta →
           </button>
           <a href="#come-funziona" style={{
             padding: '15px 32px', fontSize: 16, fontWeight: 600,
@@ -338,12 +421,13 @@ export default function LandingPage() {
           </a>
         </div>
 
-        {/* App mockup */}
-        <AppMockup />
+        <div className="mockup-wrapper">
+          <AppMockup />
+        </div>
       </section>
 
       {/* ── SOCIAL PROOF BAR ────────────────────── */}
-      <div style={{ background: C.navy, padding: '20px 24px', textAlign: 'center' }}>
+      <div style={{ background: C.navy, padding: '18px 20px', textAlign: 'center' }}>
         <p style={{ margin: 0, fontSize: 14, color: 'rgba(255,255,255,0.75)', letterSpacing: '-0.01em' }}>
           Costruito da{' '}
           <a href="https://timbro.agency" target="_blank" rel="noopener noreferrer"
@@ -354,10 +438,10 @@ export default function LandingPage() {
       </div>
 
       {/* ── FEATURES ────────────────────────────── */}
-      <section style={{ padding: '80px 24px', maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+      <section style={{ padding: 'clamp(56px,8vw,80px) 20px', maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
           <p style={{ fontSize: 13, fontWeight: 700, color: C.orange, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 12px' }}>Funzionalità</p>
-          <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: C.navy, margin: '0 0 16px', letterSpacing: '-0.03em' }}>
+          <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 700, color: C.navy, margin: '0 0 16px', letterSpacing: '-0.03em' }}>
             Tutto ciò che serve,<br />niente di superfluo.
           </h2>
           <p style={{ fontSize: 17, color: C.muted, maxWidth: 480, margin: '0 auto', lineHeight: 1.6 }}>
@@ -365,20 +449,25 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
+        <div className="features-grid">
           {FEATURES.map(f => (
             <div key={f.title} style={{
               background: C.glass,
               backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
               border: `1px solid ${C.border}`,
               borderRadius: 20,
-              padding: '28px 28px',
+              padding: '28px',
               transition: 'transform 200ms, box-shadow 200ms',
             }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(29,53,87,0.10)' }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none' }}
             >
-              <div style={{ fontSize: 32, marginBottom: 16 }}>{f.icon}</div>
+              <div style={{ marginBottom: 18, display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+                <div style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(29,53,87,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <f.Icon />
+                </div>
+              </div>
               <h3 style={{ fontSize: 17, fontWeight: 700, color: C.navy, margin: '0 0 10px', letterSpacing: '-0.02em' }}>{f.title}</h3>
               <p style={{ fontSize: 14, color: C.muted, margin: 0, lineHeight: 1.7 }}>{f.desc}</p>
             </div>
@@ -387,20 +476,17 @@ export default function LandingPage() {
       </section>
 
       {/* ── COME FUNZIONA ───────────────────────── */}
-      <section id="come-funziona" style={{ padding: '80px 24px', background: 'rgba(255,255,255,0.4)' }}>
+      <section id="come-funziona" style={{ padding: 'clamp(56px,8vw,80px) 20px', background: 'rgba(255,255,255,0.4)' }}>
         <div style={{ maxWidth: 860, margin: '0 auto', textAlign: 'center' }}>
           <p style={{ fontSize: 13, fontWeight: 700, color: C.orange, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 12px' }}>Come funziona</p>
-          <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: C.navy, margin: '0 0 56px', letterSpacing: '-0.03em' }}>
+          <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 700, color: C.navy, margin: '0 0 48px', letterSpacing: '-0.03em' }}>
             Da zero a operativo<br />in meno di 5 minuti.
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
-            {STEPS.map((s, i) => (
-              <div key={s.n} style={{ position: 'relative' }}>
-                {i < STEPS.length - 1 && (
-                  <div style={{ position: 'absolute', top: 28, left: 'calc(50% + 40px)', right: '-50%', height: 2, background: `linear-gradient(90deg, ${C.orange}, transparent)`, display: 'none' }} />
-                )}
-                <div style={{ width: 52, height: 52, borderRadius: 16, background: `rgba(231,111,81,0.12)`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 20, fontWeight: 800, color: C.orange, fontFamily: "'DM Sans',sans-serif" }}>
+          <div className="steps-grid">
+            {STEPS.map(s => (
+              <div key={s.n}>
+                <div style={{ width: 52, height: 52, borderRadius: 16, background: 'rgba(231,111,81,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 20, fontWeight: 800, color: C.orange, fontFamily: "'DM Sans',sans-serif" }}>
                   {s.n}
                 </div>
                 <h3 style={{ fontSize: 17, fontWeight: 700, color: C.navy, margin: '0 0 10px', letterSpacing: '-0.02em' }}>{s.title}</h3>
@@ -412,24 +498,23 @@ export default function LandingPage() {
       </section>
 
       {/* ── BETA CALLOUT ────────────────────────── */}
-      <section style={{ padding: '80px 24px' }}>
+      <section style={{ padding: 'clamp(40px,6vw,80px) 20px' }}>
         <div style={{
           maxWidth: 860, margin: '0 auto',
           background: C.navy,
           borderRadius: 28,
-          padding: 'clamp(40px, 6vw, 64px)',
+          padding: 'clamp(36px, 6vw, 64px)',
           textAlign: 'center',
           position: 'relative',
           overflow: 'hidden',
         }}>
-          {/* Decorative blob */}
           <div style={{ position: 'absolute', top: -60, right: -60, width: 240, height: 240, borderRadius: '50%', background: 'rgba(231,111,81,0.12)', pointerEvents: 'none' }} />
           <div style={{ position: 'absolute', bottom: -80, left: -40, width: 200, height: 200, borderRadius: '50%', background: 'rgba(42,157,143,0.10)', pointerEvents: 'none' }} />
 
           <span style={{ display: 'inline-block', fontSize: 12, fontWeight: 700, color: C.orange, background: 'rgba(231,111,81,0.15)', padding: '5px 14px', borderRadius: 20, marginBottom: 20, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
             Beta privata
           </span>
-          <h2 style={{ fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 700, color: '#fff', margin: '0 0 16px', letterSpacing: '-0.03em' }}>
+          <h2 style={{ fontSize: 'clamp(22px, 4vw, 40px)', fontWeight: 700, color: '#fff', margin: '0 0 16px', letterSpacing: '-0.03em' }}>
             Stai vedendo timbrOS prima di tutti.
           </h2>
           <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.68)', maxWidth: 520, margin: '0 auto 36px', lineHeight: 1.6 }}>
@@ -441,30 +526,31 @@ export default function LandingPage() {
             borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif",
             letterSpacing: '-0.02em', boxShadow: '0 8px 24px rgba(231,111,81,0.4)',
           }}>
-            Richiedi l'accesso anticipato →
+            Richiedi l&apos;accesso anticipato →
           </button>
         </div>
       </section>
 
       {/* ── FORM ────────────────────────────────── */}
-      <section ref={formRef} id="accesso" style={{ padding: '80px 24px 100px' }}>
+      <section ref={formRef} id="accesso" style={{ padding: 'clamp(40px,6vw,80px) 20px clamp(60px,8vw,100px)' }}>
         <div style={{ maxWidth: 520, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             <p style={{ fontSize: 13, fontWeight: 700, color: C.orange, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 12px' }}>Accesso anticipato</p>
-            <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 700, color: C.navy, margin: '0 0 14px', letterSpacing: '-0.03em' }}>
+            <h2 style={{ fontSize: 'clamp(24px, 4vw, 38px)', fontWeight: 700, color: C.navy, margin: '0 0 14px', letterSpacing: '-0.03em' }}>
               Unisciti alla beta.
             </h2>
             <p style={{ fontSize: 16, color: C.muted, margin: 0, lineHeight: 1.6 }}>
-              Lascia i tuoi dati, valutiamo la richiesta e ti inviamo il link per creare l'account.
+              Lascia i tuoi dati, valutiamo la richiesta e ti inviamo il link per creare l&apos;account.
             </p>
           </div>
 
           <div style={{
             background: C.glass,
             backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
             border: `1px solid ${C.border}`,
             borderRadius: 24,
-            padding: 'clamp(28px, 5vw, 40px)',
+            padding: 'clamp(24px, 5vw, 40px)',
             boxShadow: '0 8px 32px rgba(29,53,87,0.08)',
           }}>
             <AccessForm />
@@ -475,11 +561,10 @@ export default function LandingPage() {
       {/* ── FOOTER ──────────────────────────────── */}
       <footer style={{
         background: C.navy,
-        padding: '32px 24px',
+        padding: '28px 20px',
         textAlign: 'center',
       }}>
-        <Logo size={15} />
-        <p style={{ margin: '16px 0 4px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>
+        <p style={{ margin: '0 0 4px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>
           timbrOS by{' '}
           <a href="https://timbro.agency" target="_blank" rel="noopener noreferrer"
             style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontWeight: 600 }}>
