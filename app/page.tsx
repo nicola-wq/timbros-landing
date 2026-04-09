@@ -346,6 +346,7 @@ export default function LandingPage() {
         }
         .mockup-wrapper { display: block; }
         .mobile-trust { display: none; }
+        .mobile-bullets { display: none; }
         .header-badge { display: inline-block; }
         @media (max-width: 640px) {
           .hero-section {
@@ -435,7 +436,7 @@ export default function LandingPage() {
           </p>
 
           {/* Bullet bridge — mobile only */}
-          <div className="mobile-bullets" style={{ flexDirection: 'column', gap: 10, marginBottom: 24, display: 'none' }}>
+          <div className="mobile-bullets" style={{ flexDirection: 'column', gap: 10, marginBottom: 24 }}>
             {[
               { label: 'Setup in 5 minuti', sub: 'Parti subito con template pronti per ogni settore.' },
               { label: 'Zero distrazioni',  sub: 'Solo gli strumenti che servono, senza funzioni inutili.' },
