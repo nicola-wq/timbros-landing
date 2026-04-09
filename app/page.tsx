@@ -358,9 +358,14 @@ export default function LandingPage() {
         .header-badge { display: inline-block; }
         @media (max-width: 640px) {
           .hero-section {
-            padding: 32px 20px 40px !important;
+            min-height: calc(100svh - 56px);
+            display: flex !important;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 20px 28px !important;
             text-align: left;
           }
+          .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: center; }
           .hero-badge { justify-content: flex-start !important; margin-bottom: 12px !important; }
           .hero-h1 { font-size: 52px !important; line-height: 1.0 !important; margin-bottom: 10px !important; }
           .hero-sub { font-size: 15px !important; margin-bottom: 10px !important; line-height: 1.45 !important; }
@@ -369,10 +374,10 @@ export default function LandingPage() {
             gap: 7px;
             align-items: flex-start;
             justify-content: flex-start;
-            margin-bottom: 24px;
+            margin-bottom: 0;
           }
-          .hero-mobile-cta { display: flex; flex-direction: column; gap: 10px; width: 100%; }
-          .mobile-trust { display: none !important; }
+          .hero-mobile-cta { display: none !important; }
+          .mobile-trust { display: flex; }
           .form-row { grid-template-columns: 1fr; }
           .features-grid { grid-template-columns: 1fr; }
           .steps-grid { grid-template-columns: 1fr; }
