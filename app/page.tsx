@@ -319,6 +319,11 @@ export default function LandingPage() {
           grid-template-columns: 1fr 1fr;
           gap: 12px;
         }
+        .hero-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
         .hero-buttons {
           display: flex;
           gap: 12px;
@@ -337,14 +342,26 @@ export default function LandingPage() {
           gap: 24px;
         }
         .mockup-wrapper { display: block; }
+        .mobile-trust { display: none; }
         .header-badge { display: inline-block; }
         @media (max-width: 640px) {
+          .hero-section {
+            min-height: calc(100svh - 56px);
+            justify-content: center;
+            padding-top: 32px !important;
+            padding-bottom: 32px !important;
+          }
           .form-row { grid-template-columns: 1fr; }
-          .hero-buttons { flex-direction: column; align-items: stretch; }
+          .hero-buttons {
+            flex-direction: column;
+            align-items: stretch;
+            margin-bottom: 28px;
+          }
           .hero-buttons a, .hero-buttons button { text-align: center; }
           .features-grid { grid-template-columns: 1fr; }
           .steps-grid { grid-template-columns: 1fr; }
           .mockup-wrapper { display: none; }
+          .mobile-trust { display: flex; }
           .header-badge { display: none; }
         }
       `}</style>
@@ -377,7 +394,7 @@ export default function LandingPage() {
       </header>
 
       {/* ── HERO ────────────────────────────────── */}
-      <section style={{ padding: 'clamp(48px,8vw,80px) 20px clamp(40px,6vw,60px)', textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
+      <section className="hero-section" style={{ padding: 'clamp(48px,8vw,80px) 20px clamp(40px,6vw,60px)', textAlign: 'center', maxWidth: 800, margin: '0 auto', width: '100%' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(29,53,87,0.07)', padding: '6px 14px', borderRadius: 20, marginBottom: 24, fontSize: 13, color: C.navy, fontWeight: 600 }}>
           <span style={{ width: 7, height: 7, borderRadius: '50%', background: C.sage, display: 'inline-block', flexShrink: 0 }} />
           Accesso anticipato aperto — posti limitati
@@ -419,6 +436,35 @@ export default function LandingPage() {
           }}>
             Scopri come funziona
           </a>
+        </div>
+
+        {/* Mobile trust block — visible only on mobile */}
+        <div className="mobile-trust" style={{
+          flexDirection: 'column', gap: 12, width: '100%', maxWidth: 420, margin: '0 auto',
+        }}>
+          {[
+            { icon: <IconPipeline />, label: 'Pipeline kanban', sub: 'Fasi personalizzabili' },
+            { icon: <IconTask />,     label: 'Task integrati',  sub: 'Direttamente sui deal' },
+            { icon: <IconLock />,     label: 'Sicurezza totale',sub: '2FA + Row Level Security' },
+          ].map(item => (
+            <div key={item.label} style={{
+              display: 'flex', alignItems: 'center', gap: 16,
+              background: C.glass, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
+              border: `1px solid ${C.border}`, borderRadius: 16, padding: '14px 18px',
+              textAlign: 'left',
+            }}>
+              <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(29,53,87,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                {item.icon}
+              </div>
+              <div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: C.navy, letterSpacing: '-0.02em' }}>{item.label}</div>
+                <div style={{ fontSize: 13, color: C.muted, marginTop: 2 }}>{item.sub}</div>
+              </div>
+            </div>
+          ))}
+          <p style={{ fontSize: 13, color: C.muted, margin: '4px 0 0', textAlign: 'center' }}>
+            Nessuna carta di credito · Accesso beta gratuito
+          </p>
         </div>
 
         <div className="mockup-wrapper">
