@@ -396,7 +396,7 @@ export default function LandingPage() {
         padding: '0 20px',
       }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Logo size={22} />
+          <a href="/" style={{ textDecoration: 'none' }}><Logo size={22} /></a>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span className="header-badge" style={{ fontSize: 12, fontWeight: 600, color: C.orange, background: 'rgba(231,111,81,0.1)', padding: '4px 10px', borderRadius: 20 }}>
               Beta privata
