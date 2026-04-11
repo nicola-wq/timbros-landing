@@ -70,6 +70,35 @@ function IconLock() {
     </svg>
   )
 }
+function IconNote() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
+      <polyline points="10 9 9 9 8 9"/>
+    </svg>
+  )
+}
+function IconStar() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
+  )
+}
+function IconKanbanContact() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="5" height="14" rx="1"/>
+      <rect x="9.5" y="3" width="5" height="9" rx="1"/>
+      <rect x="16" y="3" width="5" height="11" rx="1"/>
+      <circle cx="9" cy="19" r="1.5" fill={C.navy}/>
+      <circle cx="16" cy="17" r="1.5" fill={C.navy}/>
+    </svg>
+  )
+}
 function IconEnvelope() {
   return (
     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -80,12 +109,14 @@ function IconEnvelope() {
 }
 
 const FEATURES = [
-  { Icon: IconPipeline, title: 'Pipeline adattabile', desc: 'Scegli un template (agenzia, B2B, real estate, recruiting…) o costruisci le tue fasi da zero. Ogni workspace lavora come vuoi tu.' },
-  { Icon: IconContacts, title: 'Contatti smart', desc: 'Importa da CSV o vCard, assegna colori e ruoli, collega ogni contatto alle opportunità. La rubrica che mancava al tuo CRM.' },
-  { Icon: IconTask,     title: 'Task integrati', desc: "Crea attività direttamente sui deal, assegnale al team, traccia scadenze. Nessun'altra app necessaria." },
-  { Icon: IconDashboard,title: 'Dashboard KPI', desc: 'Valore pipeline pesato, conversione per stage, attività aperte. I numeri che contano, sempre in primo piano.' },
-  { Icon: IconWorkspace,title: 'Multi-workspace', desc: 'Gestisci più clienti o progetti in spazi separati. Cambia workspace con un click — dati isolati, nessuna contaminazione.' },
-  { Icon: IconLock,     title: 'Sicurezza enterprise', desc: '2FA nativo TOTP, Row Level Security su ogni dato, invite membri con controllo ruoli. Tuo e solo tuo.' },
+  { Icon: IconPipeline,        title: 'Pipeline adattabile',     desc: 'Scegli un template (agenzia, B2B, real estate, recruiting…) o costruisci le tue fasi da zero. Drag & drop nativo, ogni workspace lavora come vuoi tu.' },
+  { Icon: IconKanbanContact,   title: 'Contatti in kanban',       desc: 'Visualizza i tuoi contatti in lista o in una board kanban con fasi personalizzabili. Sposta i lead tra gli stage con un drag, esattamente come in pipeline.' },
+  { Icon: IconNote,            title: 'Note unificate',           desc: 'Scrivi note collegate a deal, contatti o workspace. Cestino integrato per recuperare contenuti eliminati per errore — niente si perde davvero.' },
+  { Icon: IconStar,            title: 'Valutazione contatti',     desc: 'Assegna da 1 a 5 stelle a ogni contatto per prioritizzare i lead più caldi. Il rating è visibile in lista, kanban e scheda di dettaglio.' },
+  { Icon: IconTask,            title: 'Task integrati',           desc: "Crea attività direttamente sui deal o sui contatti, assegnale al team, traccia scadenze. Nessun'altra app necessaria." },
+  { Icon: IconDashboard,       title: 'Dashboard KPI',            desc: 'Valore pipeline pesato, conversione per stage, attività aperte. I numeri che contano, sempre in primo piano.' },
+  { Icon: IconWorkspace,       title: 'Multi-workspace',          desc: 'Gestisci più clienti o progetti in spazi separati con URL dedicato (/{wsId}/dashboard). Cambia workspace con un click — dati isolati, nessuna contaminazione.' },
+  { Icon: IconLock,            title: 'Sicurezza enterprise',     desc: '2FA nativo TOTP, Row Level Security su ogni dato, invite membri con controllo ruoli. Tuo e solo tuo.' },
 ]
 
 const STEPS = [
@@ -396,7 +427,7 @@ export default function LandingPage() {
         padding: '0 20px',
       }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <a href="/" style={{ textDecoration: 'none' }}><Logo size={22} /></a>
+          <a href="/" style={{ textDecoration: 'none', cursor: 'pointer' }}><Logo size={22} /></a>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span className="header-badge" style={{ fontSize: 12, fontWeight: 600, color: C.orange, background: 'rgba(231,111,81,0.1)', padding: '4px 10px', borderRadius: 20 }}>
               Beta privata
@@ -436,7 +467,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="hero-sub" style={{ fontSize: 'clamp(16px, 2.5vw, 22px)', color: C.muted, margin: '0 0 32px', lineHeight: 1.55, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
-            Pipeline kanban, contatti, task e KPI in un unico spazio flessibile.
+            Pipeline kanban, contatti con rating, note collegate e KPI in un unico spazio flessibile.
             Niente bloat, niente prezzi assurdi. Solo ciò che serve davvero.
           </p>
 
@@ -444,8 +475,8 @@ export default function LandingPage() {
           <div className="hero-bullets">
             {[
               'Setup in 5 minuti',
-              'Zero distrazioni',
-              'Tutto in una vista',
+              'Note con cestino',
+              'Contatti in kanban',
             ].map(label => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
@@ -556,8 +587,8 @@ export default function LandingPage() {
           <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 700, color: C.navy, margin: '0 0 16px', letterSpacing: '-0.03em' }}>
             Tutto ciò che serve,<br />niente di superfluo.
           </h2>
-          <p style={{ fontSize: 17, color: C.muted, maxWidth: 480, margin: '0 auto', lineHeight: 1.6 }}>
-            timbrOS è progettato per chi vuole smettere di perdere tempo con CRM complicati.
+          <p style={{ fontSize: 17, color: C.muted, maxWidth: 520, margin: '0 auto', lineHeight: 1.6 }}>
+            timbrOS è progettato per chi vuole smettere di perdere tempo con CRM complicati. Pipeline, contatti kanban, note, rating e KPI — tutto integrato, niente da integrare.
           </p>
         </div>
 
