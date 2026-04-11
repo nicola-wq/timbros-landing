@@ -88,6 +88,15 @@ function IconStar() {
     </svg>
   )
 }
+function IconImport() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+  )
+}
 function IconKanbanContact() {
   return (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -116,6 +125,7 @@ const FEATURES = [
   { Icon: IconTask,            title: 'Task integrati',           desc: "Crea attività direttamente sui deal o sui contatti, assegnale al team, traccia scadenze. Nessun'altra app necessaria." },
   { Icon: IconDashboard,       title: 'Dashboard KPI',            desc: 'Valore pipeline pesato, conversione per stage, attività aperte. I numeri che contano, sempre in primo piano.' },
   { Icon: IconWorkspace,       title: 'Multi-workspace',          desc: 'Gestisci più clienti o progetti in spazi separati con URL dedicato (/{wsId}/dashboard). Cambia workspace con un click — dati isolati, nessuna contaminazione.' },
+  { Icon: IconImport,          title: 'Import & backup',          desc: 'Importa contatti da CSV o vCard in pochi secondi. Esporta tutto quando vuoi. Backup manuale sempre disponibile — i tuoi dati restano tuoi.' },
   { Icon: IconLock,            title: 'Sicurezza enterprise',     desc: '2FA nativo TOTP, Row Level Security su ogni dato, invite membri con controllo ruoli. Tuo e solo tuo.' },
 ]
 
