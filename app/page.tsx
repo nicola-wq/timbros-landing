@@ -91,6 +91,38 @@ function IconGlobe() {
     </svg>
   )
 }
+function IconTable({ color = C.navy }: { color?: string }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <line x1="3" y1="9" x2="21" y2="9"/>
+      <line x1="3" y1="15" x2="21" y2="15"/>
+      <line x1="9" y1="9" x2="9" y2="21"/>
+    </svg>
+  )
+}
+function IconColumns({ color = C.navy }: { color?: string }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="5" height="18" rx="1.5"/>
+      <rect x="9.5" y="3" width="5" height="11" rx="1.5"/>
+      <rect x="16" y="3" width="5" height="14" rx="1.5"/>
+      <line x1="9.5" y1="18" x2="14.5" y2="18" strokeDasharray="2 2"/>
+    </svg>
+  )
+}
+function IconBuilding({ color = C.navy }: { color?: string }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="9" width="13" height="13" rx="1"/>
+      <path d="M8 22V6a2 2 0 012-2h10a2 2 0 012 2v16"/>
+      <line x1="16" y1="13" x2="18" y2="13"/>
+      <line x1="16" y1="17" x2="18" y2="17"/>
+      <line x1="7" y1="13" x2="9" y2="13"/>
+      <line x1="7" y1="17" x2="9" y2="17"/>
+    </svg>
+  )
+}
 
 /* ── Logo ─────────────────────────────────────────── */
 function Logo({ size = 20 }: { size?: number }) {
@@ -105,36 +137,45 @@ function Logo({ size = 20 }: { size?: number }) {
 function PipelineMockup() {
   const stages = ['Lead', 'Proposta', 'Trattativa', 'Vinto']
   const cards = [
-    { stage: 0, name: 'Luca Ferrari',  val: '€ 4.200', tag: 'Caldo', prob: 20 },
-    { stage: 0, name: 'Studio Rossi',  val: '€ 8.500', tag: 'Da chiamare', prob: 10 },
-    { stage: 1, name: 'Acme srl',      val: '€ 12.000', tag: 'Proposta inviata', prob: 50 },
-    { stage: 2, name: 'Beta Tech',     val: '€ 6.800', tag: 'In trattativa', prob: 75 },
-    { stage: 3, name: 'Gamma Srl',     val: '€ 9.200', tag: 'Chiuso', prob: 100 },
+    { stage: 0, name: 'Luca Ferrari',   val: '€ 4.200',  tag: 'Caldo',            prob: 20  },
+    { stage: 0, name: 'Studio Rossi',   val: '€ 8.500',  tag: 'Da chiamare',      prob: 10  },
+    { stage: 1, name: 'Acme srl',       val: '€ 12.000', tag: 'Proposta inviata', prob: 50  },
+    { stage: 1, name: 'Nextwave',       val: '€ 5.400',  tag: 'In revisione',     prob: 40  },
+    { stage: 2, name: 'Beta Tech',      val: '€ 6.800',  tag: 'In trattativa',    prob: 75  },
+    { stage: 3, name: 'Gamma Srl',      val: '€ 9.200',  tag: 'Chiuso',           prob: 100 },
   ]
   const stageColors = [C.orange, '#6366f1', '#f59e0b', C.sage]
   return (
     <div style={{ background: 'rgba(255,255,255,0.55)', backdropFilter: 'blur(20px)', borderRadius: 20, border: `1px solid ${C.border}`, overflow: 'hidden', boxShadow: '0 20px 60px rgba(29,53,87,0.12)' }}>
-      <div style={{ background: 'rgba(255,255,255,0.8)', borderBottom: `1px solid ${C.border}`, padding: '10px 16px', display: 'flex', alignItems: 'center', gap: 8 }}>
-        <div style={{ display: 'flex', gap: 5 }}>
-          {['#ff5f57','#ffbd2e','#28c840'].map(c => <div key={c} style={{ width: 9, height: 9, borderRadius: '50%', background: c }} />)}
+      {/* Topbar */}
+      <div style={{ background: 'rgba(255,255,255,0.85)', borderBottom: `1px solid ${C.border}`, padding: '11px 18px', display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', gap: 6 }}>
+          {['#ff5f57','#ffbd2e','#28c840'].map(c => <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c }} />)}
         </div>
-        <div style={{ flex: 1, textAlign: 'center', fontSize: 12, fontWeight: 600, color: C.navy, opacity: 0.7 }}>Pipeline — Timbro Agency</div>
+        <div style={{ flex: 1, textAlign: 'center', fontSize: 12, fontWeight: 600, color: C.navy, opacity: 0.65, letterSpacing: '-0.01em' }}>Pipeline — Timbro Agency</div>
+        <div style={{ width: 60 }} />
       </div>
-      <div style={{ display: 'flex', gap: 0, overflowX: 'auto', padding: '14px 12px' }}>
+      {/* Columns */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, padding: '16px 14px' }}>
         {stages.map((stage, si) => (
-          <div key={stage} style={{ flex: '0 0 148px', padding: '0 5px' }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: stageColors[si], textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 7, paddingLeft: 2, display: 'flex', alignItems: 'center', gap: 5 }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: stageColors[si], display: 'inline-block' }} />
-              {stage}
+          <div key={stage} style={{ padding: '0 6px' }}>
+            {/* Stage header */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 9 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: stageColors[si], display: 'inline-block', flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, color: stageColors[si], textTransform: 'uppercase', letterSpacing: '0.06em' }}>{stage}</span>
+              <span style={{ marginLeft: 'auto', fontSize: 9, fontWeight: 600, color: C.muted, background: 'rgba(29,53,87,0.07)', padding: '1px 5px', borderRadius: 5 }}>
+                {cards.filter(c => c.stage === si).length}
+              </span>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+            {/* Cards */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {cards.filter(c => c.stage === si).map((card, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.9)', borderRadius: 9, padding: '9px 10px', border: `1px solid ${C.border}`, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-                  <div style={{ fontSize: 11, fontWeight: 600, color: C.navy, marginBottom: 3 }}>{card.name}</div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: si === 3 ? C.sage : C.text }}>{card.val}</div>
-                  <div style={{ marginTop: 5, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: 9, color: C.muted }}>{card.tag}</span>
-                    <span style={{ fontSize: 9, fontWeight: 700, color: stageColors[si] }}>{card.prob}%</span>
+                <div key={i} style={{ background: 'rgba(255,255,255,0.92)', borderRadius: 10, padding: '10px 11px', border: `1px solid ${C.border}`, boxShadow: '0 1px 6px rgba(0,0,0,0.05)' }}>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: C.navy, marginBottom: 4, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{card.name}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: si === 3 ? C.sage : C.text, marginBottom: 6 }}>{card.val}</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: 9, color: C.muted, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '65%' }}>{card.tag}</span>
+                    <span style={{ fontSize: 9, fontWeight: 700, color: stageColors[si], flexShrink: 0 }}>{card.prob}%</span>
                   </div>
                 </div>
               ))}
@@ -418,9 +459,10 @@ export default function LandingPage() {
   }
 
   return (
-    <div style={{ background: 'linear-gradient(145deg, #EEF0F6 0%, #F5F3F8 25%, #F3EEF0 60%, #EDF2F0 100%)', minHeight: '100vh' }}>
+    <div style={{ background: 'linear-gradient(145deg, #EEF0F6 0%, #F5F3F8 25%, #F3EEF0 60%, #EDF2F0 100%)', minHeight: '100vh', overflowX: 'hidden' }}>
       <style>{`
         * { box-sizing: border-box; }
+        html, body { overflow-x: hidden; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .hero-section {
           padding: clamp(48px,8vw,88px) 20px clamp(40px,6vw,64px);
@@ -444,14 +486,16 @@ export default function LandingPage() {
         }
         .feature-split.flip { direction: rtl; }
         .feature-split.flip > * { direction: ltr; }
+        .feature-visual { display: block; }
         .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .security-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
         @media (max-width: 768px) {
-          .feature-split { grid-template-columns: 1fr; gap: 32px; direction: ltr !important; }
+          .feature-split { grid-template-columns: 1fr; gap: 28px; direction: ltr !important; }
           .feature-split.flip > * { direction: ltr; }
+          .feature-visual { display: none; }
           .security-grid { grid-template-columns: 1fr 1fr; }
-          .pain-grid { grid-template-columns: 1fr; }
+          .pain-grid { grid-template-columns: 1fr 1fr; }
           .steps-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
@@ -465,14 +509,15 @@ export default function LandingPage() {
           }
           .hero-top { flex: 1; display: flex; flex-direction: column; justify-content: center; }
           .hero-badge { justify-content: flex-start !important; margin-bottom: 12px !important; }
-          .hero-h1 { font-size: 48px !important; line-height: 1.0 !important; margin-bottom: 12px !important; }
-          .hero-sub { font-size: 15px !important; margin-bottom: 14px !important; line-height: 1.45 !important; }
+          .hero-h1 { font-size: 44px !important; line-height: 1.0 !important; margin-bottom: 12px !important; }
+          .hero-sub { font-size: 15px !important; margin-bottom: 14px !important; line-height: 1.5 !important; }
           .hero-bullets { flex-direction: column; gap: 8px; align-items: flex-start; justify-content: flex-start; margin-bottom: 0; }
           .hero-mobile-cta { display: none !important; }
           .mobile-trust { display: flex; }
           .form-row { grid-template-columns: 1fr; }
           .mockup-wrapper { display: none; }
           .header-badge { display: none; }
+          .pain-grid { grid-template-columns: 1fr; }
           .security-grid { grid-template-columns: 1fr; }
         }
       `}</style>
@@ -483,9 +528,6 @@ export default function LandingPage() {
           <a href="/" style={{ textDecoration: 'none', cursor: 'pointer' }}><Logo size={22} /></a>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span className="header-badge" style={{ fontSize: 12, fontWeight: 600, color: C.orange, background: 'rgba(231,111,81,0.1)', padding: '4px 10px', borderRadius: 20 }}>Beta privata</span>
-            <a href="https://crm.timbros.it/login" target="_blank" rel="noopener noreferrer" className="header-login" style={{ fontSize: 13, fontWeight: 600, color: C.navy, textDecoration: 'none', opacity: 0.65, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
-              Accedi →
-            </a>
             <button onClick={scrollToForm} style={{ padding: '9px 18px', fontSize: 13, fontWeight: 700, background: C.navy, color: '#fff', border: 'none', borderRadius: 10, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif", letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
               Richiedi accesso
             </button>
@@ -582,13 +624,15 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="pain-grid">
-          {[
-            { icon: '📋', title: 'Excel non scala', desc: 'Funziona per 10 contatti. Quando diventano 200, è un disastro. Nessuna visibilità sullo stato delle trattative, nessuna cronologia.' },
-            { icon: '🧩', title: 'Trello non è un CRM', desc: 'Ottimo per i task, inutile per le vendite. Non traccia valori, probabilità, note dei clienti o chi deve fare cosa nel team.' },
-            { icon: '🏢', title: 'Salesforce è per le multinazionali', desc: 'Funzionale ma sovradimensionato. Mesi di setup, prezzi proibitivi, formazione necessaria. Non è per te — e non deve esserlo.' },
-          ].map((p, i) => (
+          {([
+            { Icon: IconTable,    color: '#e74c3c', bg: 'rgba(231,76,60,0.08)',   title: 'Excel non scala',                    desc: 'Funziona per 10 contatti. Quando diventano 200, è un disastro. Nessuna visibilità sullo stato delle trattative, nessuna cronologia.' },
+            { Icon: IconColumns,  color: '#6366f1', bg: 'rgba(99,102,241,0.08)', title: 'Trello non è un CRM',                 desc: 'Ottimo per i task, inutile per le vendite. Non traccia valori, probabilità, note dei clienti o chi deve fare cosa nel team.' },
+            { Icon: IconBuilding, color: C.navy,    bg: 'rgba(29,53,87,0.07)',    title: 'Salesforce è per le multinazionali', desc: 'Funzionale ma sovradimensionato. Mesi di setup, formazione obbligatoria, costi fuori scala. Non è per te — e non deve esserlo.' },
+          ] as { Icon: React.FC<{color?: string}>, color: string, bg: string, title: string, desc: string }[]).map((p, i) => (
             <div key={i} style={{ background: C.glass, backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: `1px solid ${C.border}`, borderRadius: 20, padding: '28px 24px' }}>
-              <div style={{ fontSize: 32, marginBottom: 14 }}>{p.icon}</div>
+              <div style={{ width: 48, height: 48, borderRadius: 13, background: p.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+                <p.Icon color={p.color} />
+              </div>
               <h3 style={{ fontSize: 17, fontWeight: 700, color: C.navy, margin: '0 0 10px', letterSpacing: '-0.02em' }}>{p.title}</h3>
               <p style={{ fontSize: 14, color: C.muted, margin: 0, lineHeight: 1.7 }}>{p.desc}</p>
             </div>
@@ -617,7 +661,7 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="feature-visual">
               <PipelineMockup />
             </div>
           </div>
@@ -645,7 +689,7 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="feature-visual">
               <ContactsMockup />
             </div>
           </div>
@@ -673,7 +717,7 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="feature-visual">
               <TasksMockup />
             </div>
           </div>
@@ -701,7 +745,7 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="feature-visual">
               <KpiMockup />
             </div>
           </div>
@@ -729,7 +773,7 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="feature-visual">
               <WorkspaceMockup />
             </div>
           </div>
@@ -834,6 +878,12 @@ export default function LandingPage() {
           <div style={{ background: C.glass, backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: `1px solid ${C.border}`, borderRadius: 24, padding: 'clamp(24px, 5vw, 40px)', boxShadow: '0 8px 32px rgba(29,53,87,0.08)' }}>
             <AccessForm />
           </div>
+          <p style={{ textAlign: 'center', fontSize: 14, color: C.muted, margin: '20px 0 0' }}>
+            Hai già l&apos;accesso?{' '}
+            <a href="https://crm.timbros.it/login" target="_blank" rel="noopener noreferrer" style={{ color: C.navy, fontWeight: 700, textDecoration: 'none' }}>
+              Accedi al CRM →
+            </a>
+          </p>
         </div>
       </section>
 
