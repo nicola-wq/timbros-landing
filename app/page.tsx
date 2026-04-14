@@ -483,6 +483,9 @@ export default function LandingPage() {
           <a href="/" style={{ textDecoration: 'none', cursor: 'pointer' }}><Logo size={22} /></a>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span className="header-badge" style={{ fontSize: 12, fontWeight: 600, color: C.orange, background: 'rgba(231,111,81,0.1)', padding: '4px 10px', borderRadius: 20 }}>Beta privata</span>
+            <a href="https://crm.timbros.it/login" target="_blank" rel="noopener noreferrer" className="header-login" style={{ fontSize: 13, fontWeight: 600, color: C.navy, textDecoration: 'none', opacity: 0.65, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>
+              Accedi →
+            </a>
             <button onClick={scrollToForm} style={{ padding: '9px 18px', fontSize: 13, fontWeight: 700, background: C.navy, color: '#fff', border: 'none', borderRadius: 10, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif", letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
               Richiedi accesso
             </button>
@@ -504,7 +507,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="hero-sub" style={{ fontSize: 'clamp(16px, 2.2vw, 20px)', color: C.muted, margin: '0 0 32px', lineHeight: 1.6, maxWidth: 580, marginLeft: 'auto', marginRight: 'auto' }}>
-            Pipeline kanban visuale, contatti con rating, task assegnabili al team e dashboard KPI — in un unico spazio. Senza imparare niente di nuovo. Senza prezzi assurdi.
+            Pipeline kanban visuale, contatti con rating, task assegnabili al team e dashboard KPI — in un unico spazio. Senza imparare niente di nuovo. Senza compromessi.
           </p>
 
           <div className="hero-bullets">
@@ -521,13 +524,21 @@ export default function LandingPage() {
           </div>
 
           <div className="mockup-wrapper">
-            <div className="hero-buttons">
-              <button onClick={scrollToForm} style={{ padding: '15px 32px', fontSize: 16, fontWeight: 700, background: C.navy, color: '#fff', border: 'none', borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif", letterSpacing: '-0.02em', boxShadow: '0 8px 24px rgba(29,53,87,0.25)' }}>
-                Richiedi l&apos;accesso beta →
-              </button>
-              <a href="#come-funziona" style={{ padding: '15px 32px', fontSize: 16, fontWeight: 600, background: C.glass, color: C.navy, border: `1.5px solid ${C.border}`, borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif", textDecoration: 'none', letterSpacing: '-0.02em', backdropFilter: 'blur(10px)' }}>
-                Scopri come funziona
-              </a>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, marginBottom: 64 }}>
+              <div className="hero-buttons" style={{ marginBottom: 0 }}>
+                <button onClick={scrollToForm} style={{ padding: '15px 32px', fontSize: 16, fontWeight: 700, background: C.navy, color: '#fff', border: 'none', borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif", letterSpacing: '-0.02em', boxShadow: '0 8px 24px rgba(29,53,87,0.25)' }}>
+                  Richiedi l&apos;accesso beta →
+                </button>
+                <a href="#come-funziona" style={{ padding: '15px 32px', fontSize: 16, fontWeight: 600, background: C.glass, color: C.navy, border: `1.5px solid ${C.border}`, borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif", textDecoration: 'none', letterSpacing: '-0.02em', backdropFilter: 'blur(10px)' }}>
+                  Scopri come funziona
+                </a>
+              </div>
+              <p style={{ margin: 0, fontSize: 13, color: C.muted }}>
+                Hai già l&apos;accesso?{' '}
+                <a href="https://crm.timbros.it/login" target="_blank" rel="noopener noreferrer" style={{ color: C.navy, fontWeight: 700, textDecoration: 'none' }}>
+                  Accedi al CRM →
+                </a>
+              </p>
             </div>
             <PipelineMockup />
           </div>
@@ -542,6 +553,12 @@ export default function LandingPage() {
             Scopri come funziona
           </a>
           <p style={{ fontSize: 12, color: C.muted, textAlign: 'center', margin: '4px 0 0' }}>Nessuna carta di credito · Accesso beta gratuito</p>
+          <p style={{ fontSize: 13, color: C.muted, textAlign: 'center', margin: '2px 0 0' }}>
+            Hai già l&apos;accesso?{' '}
+            <a href="https://crm.timbros.it/login" target="_blank" rel="noopener noreferrer" style={{ color: C.navy, fontWeight: 700, textDecoration: 'none' }}>
+              Accedi al CRM →
+            </a>
+          </p>
         </div>
       </section>
 
