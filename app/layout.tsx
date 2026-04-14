@@ -61,6 +61,10 @@ export const metadata: Metadata = {
   },
 
   robots: { index: true, follow: true },
+
+  verification: {
+    google: 'rgxZ6ySxbkeq5LTQmyPROKqO9NDk1QZX4BmLIhDQ60c',
+  },
 }
 
 /* ─── Schema JSON-LD ─────────────────────────────────────────────────────── */
