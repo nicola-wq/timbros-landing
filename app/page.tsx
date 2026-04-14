@@ -451,6 +451,63 @@ function AccessForm() {
   )
 }
 
+/* ── FaqItem (accordion) ────────────────────────────── */
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div
+      style={{
+        background: open ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.7)',
+        border: `1px solid ${open ? 'rgba(29,53,87,0.18)' : C.border}`,
+        borderRadius: 16,
+        overflow: 'hidden',
+        transition: 'background 0.2s, border-color 0.2s',
+        boxShadow: open ? '0 4px 20px rgba(29,53,87,0.07)' : 'none',
+      }}
+    >
+      <button
+        onClick={() => setOpen(v => !v)}
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 16,
+          padding: '20px 24px',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          textAlign: 'left',
+          fontFamily: "'DM Sans',sans-serif",
+        }}
+      >
+        <span style={{ fontSize: 16, fontWeight: 700, color: C.navy, letterSpacing: '-0.02em', lineHeight: 1.35 }}>{q}</span>
+        <span style={{
+          flexShrink: 0,
+          width: 28,
+          height: 28,
+          borderRadius: '50%',
+          background: open ? C.orange : 'rgba(231,111,81,0.12)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s, transform 0.2s',
+          transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+        }}>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1v10M1 6h10" stroke={open ? '#fff' : C.orange} strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </span>
+      </button>
+      {open && (
+        <p style={{ margin: 0, padding: '0 24px 22px', fontSize: 15, color: C.muted, lineHeight: 1.75 }}>
+          {a}
+        </p>
+      )}
+    </div>
+  )
+}
+
 /* ── Main page ──────────────────────────────────────── */
 export default function LandingPage() {
   const formRef = useRef<HTMLDivElement>(null)
@@ -860,6 +917,48 @@ export default function LandingPage() {
           <button onClick={scrollToForm} style={{ padding: '15px 36px', fontSize: 16, fontWeight: 700, background: C.orange, color: '#fff', border: 'none', borderRadius: 14, cursor: 'pointer', fontFamily: "'DM Sans',sans-serif", letterSpacing: '-0.02em', boxShadow: '0 8px 24px rgba(231,111,81,0.4)' }}>
             Richiedi l&apos;accesso anticipato →
           </button>
+        </div>
+      </section>
+
+      {/* ── FAQ ─────────────────────────────────────── */}
+      <section id="faq" style={{ padding: 'clamp(56px,8vw,80px) 20px', background: 'rgba(255,255,255,0.4)' }}>
+        <div style={{ maxWidth: 760, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, color: C.orange, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 12px' }}>FAQ</p>
+            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 700, color: C.navy, margin: 0, letterSpacing: '-0.03em' }}>
+              Domande frequenti
+            </h2>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {[
+              {
+                q: "Cos'è timbrOS?",
+                a: "timbrOS è un CRM SaaS italiano che unisce pipeline kanban, gestione contatti, task e dashboard KPI in un unico workspace. È progettato per agenzie, freelance e team di vendita che vogliono uno strumento flessibile e GDPR-compliant, senza la complessità di soluzioni enterprise come Salesforce o HubSpot.",
+              },
+              {
+                q: "timbrOS è gratuito?",
+                a: "Sì, durante la fase beta l'accesso è completamente gratuito e non richiede carta di credito. L'accesso è su invito con valutazione manuale della candidatura.",
+              },
+              {
+                q: "I miei dati sono al sicuro?",
+                a: "timbrOS è GDPR-compliant e utilizza Row Level Security (RLS) per isolare i dati tra workspace. Include 2FA nativo (TOTP), non vende dati a terzi e permette l'esportazione totale dei propri dati in qualsiasi momento.",
+              },
+              {
+                q: "Posso gestire più clienti o progetti separati?",
+                a: "Sì. timbrOS è multi-workspace: puoi gestire più clienti, team o progetti completamente separati da un unico account. I dati di ogni workspace sono isolati e non visibili agli altri.",
+              },
+              {
+                q: "In cosa è diverso da HubSpot o Salesforce?",
+                a: "timbrOS è un CRM italiano pensato per realtà di piccole e medie dimensioni. A differenza di HubSpot o Salesforce, non richiede settimane di configurazione, non ha piani a pagamento con feature bloccate e offre un'interfaccia semplice e diretta. È ospitato in Europa ed è GDPR-compliant by design.",
+              },
+              {
+                q: "Come faccio a iniziare?",
+                a: "Compila il form qui sotto con nome, email professionale e azienda. Il team valuta la candidatura manualmente e risponde entro 24 ore. Nessuna carta richiesta. Dopo l'approvazione sei operativo in 5 minuti, scegliendo il template di pipeline più adatto al tuo settore.",
+              },
+            ].map((item, i) => (
+              <FaqItem key={i} q={item.q} a={item.a} />
+            ))}
+          </div>
         </div>
       </section>
 
